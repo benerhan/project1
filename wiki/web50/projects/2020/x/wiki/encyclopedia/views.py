@@ -38,7 +38,9 @@ def search(request):
             return redirect("entry", title=entry)  # redirect to the entry page
 
     # Serach for entries that contain the query as a substring
-    search_result = [entry for entry in entries if query in entry.lower()]
+    search_result = [
+        entry for entry in entries if query in entry.lower()
+    ]  # LIST COMPREHENSION
 
     return render(
         request,
@@ -61,7 +63,7 @@ def new_page(request):
             return render(
                 request,
                 "encyclopedia/error.html",
-                {"message": "The title cannot be empty."},
+                {"message": "The title or content can not be empty."},
             )  # Return an error message
 
         # Check if the title is already taken
